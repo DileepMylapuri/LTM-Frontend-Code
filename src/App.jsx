@@ -9,6 +9,7 @@ import Gallery from "./pages/Gallary";
 import CategoryDetails from "./pages/CategoryDetails";
 import Navbar from "./pages/HomeFolder/Navbar";
 import About from "./pages/About";
+import JourneyPage from "./pages/AboutFolder/JourneyPage";
 
 const CreateMemoryPage = lazy(() =>
   import("./pages/CreateMemoryPage")
@@ -41,6 +42,7 @@ function App() {
             <Route path="/profile" element={<Dashboard/>} />
             <Route path="/create-memory" element={<CreateMemoryPage/> }/>
             <Route path="/about" element={<About/> }/>
+            <Route path="/journey/:type" element={<JourneyPage />} />
             </Routes>
         </div>
       </Suspense>
