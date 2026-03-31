@@ -1,11 +1,11 @@
-import React from 'react'
+// import React from 'react'
 
-const Mhome = () => {
-  return (
-    <div className='flex flex-col justify-center items-center min-h-screen'>
+// const Mhome = () => {
+//   return (
+//     <div className='flex flex-col justify-center items-center min-h-screen'>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Mhome
+// export default Mhome

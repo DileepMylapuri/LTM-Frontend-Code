@@ -1,6 +1,8 @@
 // import { useState, useEffect, useRef, useCallback } from "react";
 // import Navbar from "./HomeFolder/Navbar";
 
+// import { useEffect, useRef, useState } from "react";
+
 // const GLOBAL_CSS = `
 //   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Satisfy&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -831,178 +833,54 @@
 //   );
 // }
 
-
 import React from "react";
-import { CalendarDays, MapPin, Clock } from "lucide-react";
-import { HomeData } from "../assets/assets";
+import { useReveal } from "./WeddingFolder/Shared";
+import Hero from "./WeddingFolder/Hero";
+import Wishes from "./WeddingFolder/Whishes";
+// import Gallery from "./Gallary";
+import Footer from "./HomeFolder/Footer";
+import Couple from "./WeddingFolder/Couple";
+import Details from "./WeddingFolder/Details";
+import Timeline from "./WeddingFolder/Timeline";
+import BlessingWall from "./WeddingFolder/BlessingWall";
 
-const WeddingHome = () => {
+// Import Components
+
+
+export default function WeddingHome() {
+  const { vis, bind } = useReveal();
+  
+  // Animation helper
+  const anim = (sec, cls, delay = 0) =>
+    vis[sec] ? { className: cls, style: { animationDelay: `${delay}s` } } : { style: { opacity: 0 } };
+
   return (
-    <div className="bg-rose-50 text-gray-800">
+    <div style={{ fontFamily: "'Cormorant Upright',serif", overflowX: "hidden", background: "#f8f5ff" }}>
+      {/* Inject Global CSS (The CSS variable from your original code) */}
+      <style dangerouslySetInnerHTML={{ __html: CSS_STYLES }} />
 
-      {/* ================= HERO SECTION ================= */}
-      <section className="relative h-screen flex flex-col items-center justify-center bg-cover bg-center"
-        style={{  backgroundImage: `url(${HomeData.WeddingImg})`}}>
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h3 className="text-2xl md:text-3xl font-extralight tracking-wide">Hartly Congratulations </h3>
-        </div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 style={{ fontFamily: "'Parisienne', cursive" }} className="text-5xl md:text-8xl mt-15 font-normal tracking-wide text-white">
-            Venkatesu & Nandini
-          </h1>
-          <p style={{fontFamily:'system-ui'}} className="mt-6 text-lg md:text-xl font-light">
-            
-          </p>
-          <div style={{fontFamily:'monospace'}} className="mt-8 text-rose-300 font-extralight text-xl tracking-widest">
-            06 March 2026
-          </div>
-        </div>
-      </section>
+      <Hero />
+      
+      <Wishes anim={anim} bind={bind} />
+      
+      <Couple anim={anim} bind={bind} />
 
-      {/* ================= COUPLE SECTION ================= */}
-      <section className="py-20 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-
-          <div className="flex justify-center">
-            <img
-              src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1974&auto=format&fit=crop"
-              alt="Couple"
-              className="rounded-2xl shadow-xl w-full max-w-md object-cover"
-            />
-          </div>
-
-          <div className="space-y-6">
-            <h2 className="text-3xl font-semibold text-rose-700">
-              A New Beginning
-            </h2>
-            <p className="leading-relaxed text-gray-600">
-              With hearts full of love and joy, we are delighted to announce
-              the wedding ceremony of our beloved brother. Join us as we begin
-              this beautiful journey of togetherness and commitment.
-            </p>
-            <p className="leading-relaxed text-gray-600">
-              Your presence and blessings will make this celebration even more
-              meaningful and memorable.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ================= WEDDING DETAILS ================= */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold text-rose-700 mb-12">
-            Wedding Details
-          </h2>
-
-          <div className="grid sm:grid-cols-3 gap-8">
-
-            <div className="flex flex-col items-center space-y-4">
-              <CalendarDays size={40} className="text-rose-600" />
-              <h3 className="font-semibold text-lg">Date</h3>
-              <p className="text-gray-600">06 March 2026</p>
-            </div>
-
-            <div className="flex flex-col items-center space-y-4">
-              <Clock size={40} className="text-rose-600" />
-              <h3 className="font-semibold text-lg">Time</h3>
-              <p className="text-gray-600">Between 04:30 to 6:00 AM</p>
-            </div>
-
-            <div className="flex flex-col items-center space-y-4">
-              <MapPin size={40} className="text-rose-600" />
-              <h3 className="font-semibold text-lg">Venue</h3>
-              <p className="text-gray-600 text-center">
-                PRC Convention Hall, GT Kandriga, Vedurukuppam.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ================= TIMELINE SECTION ================= */}
-      <section className="py-20 px-6 md:px-16 bg-rose-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-semibold text-center text-rose-700 mb-12">
-            Wedding Timeline
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-10">
-
-            <div className="bg-white p-8 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-rose-600">
-                Engagement Ceremony
-              </h3>
-              <p className="mt-3 text-gray-600">
-                A joyful beginning of promises and celebration with close
-                family and friends.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-rose-600">
-                Wedding Rituals
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Traditional ceremonies filled with blessings and sacred vows.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-rose-600">
-                Reception
-              </h3>
-              <p className="mt-3 text-gray-600">
-                A grand celebration with dinner and heartfelt wishes.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-rose-600">
-                Family Blessings
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Cherishing moments with loved ones and lifelong memories.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ================= PHOTO GALLERY ================= */}
-      <section className="py-20 px-6 md:px-16 bg-white">
-        <h2 className="text-3xl font-semibold text-center text-rose-700 mb-12">
-          Moments to Remember
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          <img className="rounded-xl shadow-md object-cover h-48 w-full"
-            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1974&auto=format&fit=crop" alt="" />
-          <img className="rounded-xl shadow-md object-cover h-48 w-full"
-            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="" />
-          <img className="rounded-xl shadow-md object-cover h-48 w-full"
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop" alt="" />
-          <img className="rounded-xl shadow-md object-cover h-48 w-full"
-            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1974&auto=format&fit=crop" alt="" />
-        </div>
-      </section>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-rose-900 text-white py-10 text-center">
-        <p className="text-lg tracking-wide">
-          With Love & Warm Regards
-        </p>
-        <p className="mt-2 text-rose-200">
-          Family of You
-        </p>
-      </footer>
-
+      <BlessingWall anim={anim} bind={bind} />
+      
+      <Details anim={anim} bind={bind} />
+      
+      <Timeline anim={anim} bind={bind} />
+      
+      {/* <Gallery anim={anim} bind={bind} /> */}
+      
+      <Footer />
     </div>
   );
-};
+}
 
-export default WeddingHome;
+// Keep your CSS string constant here or in a separate file
+const CSS_STYLES = `
+  @keyframes hue { from { filter: hue-rotate(0deg); } to { filter: hue-rotate(360deg); } }
+  .anim-up { animation: fadeUp 1s forwards; }
+  /* ... rest of your original CSS ... */
+`;

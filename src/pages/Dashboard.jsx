@@ -81,7 +81,7 @@ const Dashboard = () => {
 
         setUser(res.data);
       } catch (err) {
-        setError("Session expired. Please login again.");
+        setError("Session expired. Please login again.", err);
       } finally {
         setLoading(false);
       }
@@ -196,8 +196,8 @@ return (
         </div>
       {isEditing && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
-            <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 space-y-4">
-              <h2 className="text-xl font-semibold">Edit Profile</h2>
+            <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto scroll-smooth mt-10 no-scrollbar">
+              <h2 className="text-xl text-rose-500 font-semibold">Edit Profile</h2>
               <input type="text" value={formData.username}
                 onChange={(e) =>
                   setFormData({ ...formData, username: e.target.value })
@@ -327,7 +327,7 @@ return (
                     key={file._id}
                     src={file.fileUrl}
                     alt=""
-                    className="h-40 w-full object-cover rounded-xl hover:scale-105 transition"
+                    className="h-40 w-full object-cover object-top rounded-xl hover:scale-105 transition duration-300 cursor-pointer"
                   />
                 ) : (
                   <video

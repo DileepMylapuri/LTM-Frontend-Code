@@ -64,6 +64,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <>
                 <Link to="/" className="hover:text-rose-400">Home</Link>
                 <Link to="/profile" className="hover:text-rose-400">Profile</Link>
+                <Link to="/create-memory" className="hover:text-rose-400">CreateMemory</Link>
                 <Link to="/gallery" className="hover:text-rose-400">Gallery</Link>
                 <Link to="/features" className="hover:text-rose-400">Features</Link>
                 <Link to="/about" className="hover:text-rose-400">About</Link>

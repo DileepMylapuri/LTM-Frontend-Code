@@ -1,38 +1,52 @@
 import React from "react";
 import { HeartHandshake, Users, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const cards = [
+    {
+      key: "first",
+      icon: Sparkles,
+      title: "First Meeting",
+      desc: "A meaningful introduction that brought two hearts closer."
+    },
+    {
+      key: "engagement",
+      icon: HeartHandshake,
+      title: "Engagement",
+      desc: "A joyful celebration marking the promise of forever."
+    },
+    {
+      key: "wedding",
+      icon: Users,
+      title: "The Wedding",
+      desc: "A sacred ceremony uniting families and traditions."
+    }
+  ];
+
   return (
     <div className="bg-rose-50 text-gray-800">
 
-      {/* ================= HERO SECTION ================= */}
+      {/* HERO */}
       <section className="relative py-28 px-6 md:px-16 bg-gradient-to-br from-rose-100 via-white to-rose-200 text-center overflow-hidden">
-
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-light text-rose-800 tracking-wide">
-            About Our Celebration
-          </h1>
-
+          <h1 className="text-4xl md:text-6xl font-light text-rose-800 tracking-wide">About Our Celebration</h1>
           <div className="w-24 h-[2px] bg-rose-400 mx-auto my-8"></div>
-
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
             A celebration of love, unity, family values, and a beautiful journey
             that marks the beginning of a lifelong partnership.
           </p>
         </div>
-
       </section>
 
-      {/* ================= ABOUT COUPLE ================= */}
-      <section className="py-20 px-6 md:px-16 bg-white">
+       <section className="py-20 px-6 md:px-16 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-
           <div>
-            <img
-              src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1974&auto=format&fit=crop"
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1974&auto=format&fit=crop"
               alt="Couple"
-              className="rounded-2xl shadow-xl object-cover w-full"
-            />
+              className="rounded-2xl shadow-xl object-cover w-full"/>
           </div>
 
           <div className="space-y-6">
@@ -40,7 +54,7 @@ const About = () => {
               The Couple
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Himagiri and Lakshmi share a bond built on respect,
+              Venkatesu and Nandini share a bond built on respect,
               understanding, and deep affection. Their journey together is
               guided by shared dreams, values, and the support of their loving
               families.
@@ -54,51 +68,35 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= OUR STORY (GRID TIMELINE) ================= */}
+
+      {/* JOURNEY */}
       <section className="py-20 px-6 md:px-16 bg-rose-100">
-        <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl text-center text-rose-800 mb-12">
+          Our Journey
+        </h2>
 
-          <h2 className="text-3xl md:text-4xl font-light text-center text-rose-800 mb-16">
-            Our Journey
-          </h2>
+        <div className="grid md:grid-cols-3 gap-10">
+          {cards.map((card) => (
+            <div
+              key={card.key}
+              onClick={() => navigate(`/journey/${card.key}`)}
+              className="cursor-pointer bg-white p-8 rounded-2xl shadow hover:-translate-y-2 transition"
+            >
+              <card.icon className="text-rose-600 mb-4" />
 
-          <div className="grid md:grid-cols-3 gap-10">
-
-            <div className="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-2 transition">
-              <Sparkles size={32} className="text-rose-600 mb-4" />
-              <h3 className="text-xl font-semibold text-rose-700">
-                First Meeting
+              <h3 className="text-xl text-rose-700">
+                {card.title}
               </h3>
-              <p className="mt-3 text-gray-600">
-                A meaningful introduction that brought two hearts closer with
-                warmth and mutual admiration.
+
+              <p className="text-gray-600 mt-2">
+                {card.desc}
+              </p>
+
+              <p className="text-sm text-gray-400 mt-3">
+                Click to view & add memories →
               </p>
             </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-2 transition">
-              <HeartHandshake size={32} className="text-rose-600 mb-4" />
-              <h3 className="text-xl font-semibold text-rose-700">
-                Engagement
-              </h3>
-              <p className="mt-3 text-gray-600">
-                A joyful celebration surrounded by family and blessings,
-                marking the promise of forever.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-md hover:-translate-y-2 transition">
-              <Users size={32} className="text-rose-600 mb-4" />
-              <h3 className="text-xl font-semibold text-rose-700">
-                The Wedding
-              </h3>
-              <p className="mt-3 text-gray-600">
-                A sacred ceremony that unites families, traditions,
-                and lifelong companionship.
-              </p>
-            </div>
-
-          </div>
-
+          ))}
         </div>
       </section>
 
