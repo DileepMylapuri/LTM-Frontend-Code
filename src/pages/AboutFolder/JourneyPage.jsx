@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const API = "http://localhost:5000/api/journey";
+const API = "https://ltm-frontend-code.onrender.com/api/journey";
 
 const JourneyPage = () => {
   const { type } = useParams();
